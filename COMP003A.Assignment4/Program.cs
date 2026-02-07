@@ -14,7 +14,7 @@
                 // selection process starts here
 
 
-                //check to catch safety stop
+                //check for safety stop
                 while (stepsTaken >= 5)
                 {
                     Console.Write("Enter choice: ");
@@ -34,6 +34,10 @@
                         break;
                         //breaks loop and ends program
                     }
+                    else
+                    {
+                        Console.WriteLine("Invalid selection, try again.\n");
+                    }
                 }
                 if (stepsTaken >= 5)
                 {
@@ -48,8 +52,17 @@
 
                 if (selection == '1')
                 {
-                    stepsTaken++;
-                    Console.WriteLine($"Step {stepsTaken} was completed.\n");
+                    if (stepsTaken == '3')
+                    //start of skipped step logic
+                    {
+                        stepsTaken++;
+                        Console.WriteLine($"Step 3 is restricted and was skipped.");
+                    }
+                    else
+                    {
+                        stepsTaken++;
+                        Console.WriteLine($"Step {stepsTaken} was completed.\n");
+                    }
                 }
                 else if (selection == '2')
                 {
