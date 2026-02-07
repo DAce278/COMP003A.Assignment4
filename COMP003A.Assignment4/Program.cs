@@ -7,34 +7,59 @@
             Console.WriteLine("1. Start/Continue Routine\n2. View Progress\n3. Exit");
 
             int stepsTaken = 0;
+            char selection = ' ';
 
             do
             {
                 Console.Write("Enter choice: ");
-                char selection = char.Parse(Console.ReadLine());
                 // selection process starts here
 
-                if (selection == '1')
+
+                //check to catch safety stop
+                while (stepsTaken >= 5)
                 {
-                    stepsTaken++;
-                    Console.WriteLine($"Step {stepsTaken} was completed.");
-                }
-                else if (selection == '2')
-                {
-                    Console.WriteLine($"{stepsTaken} step(s) has/have been taken.");
-                }
-                else if (selection == '3')
-                {
-                    Console.WriteLine("Goodbye!");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid selection, try again.");
+                    selection = char.Parse(Console.ReadLine());
+
+                    if (selection == '1')
+                    {
+                        Console.WriteLine("Safety limit reached. Routine stopped.\n");
+                    }
+                    else if (selection == '2')
+                    {
+                        Console.WriteLine($"{stepsTaken} step(s) has/have been taken.\n");
+                    }
+                    else if (selection == '3')
+                    {
+                        break;
+                        //breaks loop and ends program
+                    }
                 }
 
-            }
-            while (true;
-        }
+
+                //usual loop before 5 steps taken
+                selection = char.Parse(Console.ReadLine());
+                if (selection == '1')
+                    {
+                        stepsTaken++;
+                        Console.WriteLine($"Step {stepsTaken} was completed.\n");
+                    }
+                    else if (selection == '2')
+                    {
+                        Console.WriteLine($"{stepsTaken} step(s) has/have been taken.\n");
+                    }
+                    else if (selection == '3')
+                    {
+                        Console.WriteLine("Goodbye!");
+                        break;
+                        //breaks loop and ends program
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid selection, try again.\n");
+                    }
+
+            
+                
+            } while (true);
     }
-}
+}}
